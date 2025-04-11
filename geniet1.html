@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>TradingView Chart</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff; /* Vit bakgrund som Avanza */
+      font-family: 'Arial', sans-serif;
+    }
+    .tradingview-widget-container {
+      width: 100%;
+      height: calc(100% - 30px); /* Plats för tunn rubrik */
+      border: none; /* Ingen ram */
+    }
+    .chart-title {
+      height: 30px; /* Tunn rubrik */
+      text-align: left;
+      font-size: 16px; /* Lite större än tidigare, men fortfarande diskret */
+      font-weight: 600;
+      color: #000000; /* Svart text som Avanza */
+      padding: 6px 10px; /* Minimal padding */
+      background: #ffffff; /* Vit bakgrund */
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-title" id="chart-title">Aktiegraf</div>
+  <div class="tradingview-widget-container">
+    <div id="tradingview_advanced_chart"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+    </script>
+  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const symbol = urlParams.get('symbol') || 'OMXSTO:BAHN-B'; /* Standard: Bahnhof B */
+    document.getElementById('chart-title').textContent = symbol.replace('OMXSTO:', '').replace('-', ' '); /* T.ex. "BAHN B" */
+    const widgetConfig = {
+      "width": "100%",
+      "height": "100%",
+      "symbol": symbol,
+      "interval": "D", /* Daglig vy som Avanzas standard */
+      "timezone": "Europe/Stockholm", /* Svensk tidzon */
+      "theme": "light",
+      "style": "1", /* Candlesticks */
+      "locale": "sv_SE", /* Svenska */
+      "toolbar_bg": "#ffffff", /* Vit verktygsrad */
+      "backgroundColor": "#ffffff", /* Vit grafbakgrund */
+      "gridColor": "#e6e6e6", /* Ljusgrå rutnät */
+      "upColor": "#00a65a", /* Grön för uppåt */
+      "downColor": "#ff4d4d", /* Röd för nedåt */
+      "enable_publishing": false,
+      "allow_symbol_change": false, /* Låst symbol som Avanza */
+      "hide_side_toolbar": false, /* Visa verktygsrad till vänster */
+      "hide_top_toolbar": false, /* Visa tidsintervall */
+      "range": "1Y", /* Visa 1 år som standard */
+      "container_id": "tradingview_advanced_chart",
+      "studies": [
+        {
+          "id": "Volume@tv-basicstudies",
+          "inputs": { "color": "#b0b0b0", "opacity": 0.4 } /* Grå volym med låg opacitet */
+        }
+      ],
+      "details": true /* Visa prisdetaljer */
+    };
+    document.currentScript.previousSibling.innerHTML = JSON.stringify(widgetConfig);
+  </script>
+</body>
+</html>
