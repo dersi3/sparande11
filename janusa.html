@@ -32,7 +32,7 @@
       padding: 5px 0;
     }
     .tradingview-widget-copyright span {
-      color: #00a65a; /* Grön för att matcha tidigare önskemål */
+      color: #00a65a;
       pointer-events: none;
     }
   </style>
@@ -50,18 +50,18 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const symbol = urlParams.get('symbol') || 'OMXSTO:BAHN-B';
-    // Rengör symbolen för visning i rubriken
     const cleanSymbol = symbol
-      .replace('OMXSTO:', '') // Tar bort börsprefix
-      .replace('-', ' ') // Ersätter bindestreck med mellanslag
-      .replace(/\b\w/g, c => c.toUpperCase()); // Gör första bokstäverna stora
-    document.getElementById('chart-title').textContent = cleanSymbol; // T.ex. "Bahnhof B"
+      .replace('OMXSTO:', '')
+      .replace('NASDAQ:', '')
+      .replace('-', ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+    document.getElementById('chart-title').textContent = cleanSymbol;
     const widgetConfig = {
       "autosize": true,
       "symbol": symbol,
       "timezone": "Europe/Stockholm",
       "theme": "light",
-      "style": "3",
+      "style": "1", /* Candlesticks */
       "locale": "sv_SE",
       "backgroundColor": "rgba(255, 255, 255, 1)",
       "gridColor": "rgba(255, 255, 255, 0.06)",
@@ -69,7 +69,8 @@
       "range": "ALL",
       "allow_symbol_change": false,
       "show_popup_button": false,
-      "upColor": "#00a65a" /* Försöker med grön igen */
+      "upColor": "#00a65a",
+      "downColor": "#FF0000"
     };
     document.currentScript.previousSibling.innerHTML = JSON.stringify(widgetConfig);
   </script>
