@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Finlogix Widget</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    .finlogix-container { height: 60px; }
+  </style>
+</head>
+<body>
+  <div class="finlogix-container"></div>
+  <script src="https://widget.finlogix.com/Widget.js"></script>
+  <script>
+    Widget.init({
+      widgetId: "5ec28461-04e6-4ba7-9ce5-c54c01c89f73",
+      type: "StripBar",
+      language: "en",
+      showBrand: true,
+      isShowTradeButton: true,
+      isShowBeneathLink: true,
+      isShowDataFromACYInfo: true,
+      symbolPairs: [
+        { symbolId: "52", symbolName: "SP500" },
+        { symbolId: "17", symbolName: "EUR/SEK" },
+        { symbolId: "10068", symbolName: "Nasdaq" },
+        { symbolId: "20021", symbolName: "BerkshireHathaway" },
+        { symbolId: "39", symbolName: "USD/SEK" },
+        { symbolId: "10004", symbolName: "Alphabet" },
+        { symbolId: "10007", symbolName: "Apple" },
+        { symbolId: "10021", symbolName: "NVIDIA" },
+        { symbolId: "10029", symbolName: "Microsoft" },
+        { symbolId: "66", symbolName: "BTC/USD" },
+        { symbolId: "20043", symbolName: "Visa" },
+        { symbolId: "20007", symbolName: "Mastercard" },
+        { symbolId: "10022", symbolName: "Netflix" },
+        { symbolId: "20073", symbolName: "Coca-Cola" },
+        { symbolId: "10051", symbolName: "PalantirTechnologies" },
+        { symbolId: "51", symbolName: "DJ30" },
+        { symbolId: "10003", symbolName: "Adobe" },
+        { symbolId: "10027", symbolName: "AMD" },
+        { symbolId: "20271", symbolName: "Ferrari S.p.A." },
+        { symbolId: "20032", symbolName: "Disney" },
+        { symbolId: "20050", symbolName: "Oracle" },
+        { symbolId: "67", symbolName: "ETH/USD" }
+      ],
+      isAdaptive: true
+    });
+  </script>
+</body>
+</html>
